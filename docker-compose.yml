@@ -1,0 +1,14 @@
+version: '2'
+services:
+  jenkins:
+    image: 'jenkins/jenkins:lts'
+    container_name: accellog_jenkins
+    labels:
+      kompose.service.type: nodeport
+    ports:
+      - '80:8080'
+      - '443:8443'
+      - '50000:50000'
+    volumes:
+      - './data:/var/jenkins_home'
+      - '%HOMEPATH%:/home'
